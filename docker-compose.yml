@@ -1,0 +1,63 @@
+version: "3.7"
+
+services:
+
+  web:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./src/:/var/www/myapp
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - php
+      - mariadb
+    networks: 
+      - lnmp
+
+  php:
+    image: php:7.2-fpm
+    volumes:
+      - ./src:/var/www/myapp
+    #  - ./config/php/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - mariadb
+    networks: 
+      - lnmp
+
+  mariadb:
+    image: mariadb:10.4
+    restart: always
+    # command: "mysqld --init-file /data/application/init.sql"
+    env_file: .env
+    volumes:
+      - ./mariadb:/var/lib/mysql
+      # - ./config/db/init.sql:/data/application/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      # MYSQL_DATABASE: ${MYSQL_DATABASE}
+      # MYSQL_USER: ${MYSQL_USER} 
+      # MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks: 
+      - lnmp
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8000:80
+    environment:
+      # - PMA_ARBITRARY=
+      - PMA_HOST=localhost
+      - PMA_PORT=3306
+    depends_on:
+      - mariadb
+    networks: 
+      - lnmp
+
+volumes:
+  mariadb-data:
+
+networks: 
+  lnmp:
+    driver: bridge
