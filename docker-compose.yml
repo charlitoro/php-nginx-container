@@ -19,7 +19,7 @@ services:
     image: php:7.2-fpm
     volumes:
       - ./src:/var/www/myapp
-    #  - ./config/php/php.ini:/usr/local/etc/php/php.ini
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - mariadb
     networks: 
@@ -28,11 +28,11 @@ services:
   mariadb:
     image: mariadb:10.4
     restart: always
-    # command: "mysqld --init-file /data/application/init.sql"
+    command: "mysqld --init-file /data/application/init.sql"
     env_file: .env
     volumes:
       - ./mariadb:/var/lib/mysql
-      # - ./config/db/init.sql:/data/application/init.sql
+      - ./config/db/init.sql:/data/application/init.sql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       # MYSQL_DATABASE: ${MYSQL_DATABASE}
