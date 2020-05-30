@@ -52,7 +52,7 @@
             <h5>Go <a href="/index.php">back</a> to the form</h5>
         </div>
     <?php else: ?>
-        <div class="form-container" >
+        <div class="form-container shadow p-3 mb-5 bg-white rounded" >
             <h1>Parking Carts Registration </h1>
             <form action="index.php" method="POST" >
                 <!-- <div class="form-group">
@@ -107,14 +107,16 @@
         </div>
         <!-- List of registered carts -->
         <?php 
-            $template = "<div class='form-container'>";
+            $template = "
+            <div class='form-container shadow p-3 mb-5 bg-white rounded'> 
+                <h1 style='margin-bottom: 5%'>Registered Carts </h1>";
             $flag = true;        
             $controlRows = 0;
             $row = "<div class='card-deck' style='margin-bottom: 2%'>";   
             if(($handle = fopen("data/carts.csv", "r")) !== FALSE){
                 while (($cart = fgetcsv($handle, 1000, ',')) !== FALSE) {
                     if( $flag ){ $flag = false; continue; }
-                    if( $controlRows > 3) {
+                    if( $controlRows > 2) {
                         $template = "$template $row </div>";
                         $row = "<div class='card-deck' margin-bottom: 5%>";
                         $controlRows = 0;
