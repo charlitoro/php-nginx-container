@@ -107,11 +107,18 @@
         </div>
         <!-- List of registered carts -->
         <?php 
-            $template = "<div class='card-deck'>";
-            $flag = true;            
+            $template = "<div class='form-container'>";
+            $flag = true;        
+            $controlRows = 0;
+            $row = "<div class='card-deck' style='margin-bottom: 2%'>";   
             if(($handle = fopen("data/carts.csv", "r")) !== FALSE){
                 while (($cart = fgetcsv($handle, 1000, ',')) !== FALSE) {
                     if( $flag ){ $flag = false; continue; }
+                    if( $controlRows > 3) {
+                        $template = "$template $row </div>";
+                        $row = "<div class='card-deck' margin-bottom: 5%>";
+                        $controlRows = 0;
+                    }
                     $card = "
                     <div class='card'>
                         <img class='card-img-top' src='$cart[0]' alt='Card image cap'>
@@ -120,9 +127,11 @@
                             <p class='card-text'> Owner: $cart[5] $cart[6] </p>
                             <p class='card-text'><small class='text-muted'>Date: $cart[7]</small></p>
                         </div>
-                  </div>";
-                  $template = "$template $card";
+                    </div>";
+                  $row = "$row $card";
+                  $controlRows++;
                 }
+                $template = "$template $row </div>";
                 fclose($handle);
             }
             ini_set('auto_detect_line_endings',FALSE);
