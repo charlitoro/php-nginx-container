@@ -13,7 +13,8 @@ services:
       - php
       - mariadb
     networks: 
-      - lnmp
+      lnmp:
+        ipv4_address: 172.12.20.5
 
   php:
     image: php:7.2-fpm
@@ -23,7 +24,8 @@ services:
     depends_on:
       - mariadb
     networks: 
-      - lnmp
+      lnmp:
+        ipv4_address: 172.12.20.4
 
   mariadb:
     image: mariadb:10.4
@@ -39,7 +41,8 @@ services:
       # MYSQL_USER: ${MYSQL_USER} 
       # MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks: 
-      - lnmp
+      lnmp:
+        ipv4_address: 172.12.20.2
 
 
   phpmyadmin:
@@ -47,17 +50,22 @@ services:
     ports:
       - 8000:80
     environment:
-      # - PMA_ARBITRARY=
-      - PMA_HOST=localhost
+      - PMA_ARBITRARY=1
+      - PMA_HOST=172.12.20.2
       - PMA_PORT=3306
     depends_on:
       - mariadb
     networks: 
-      - lnmp
+      lnmp:
+        ipv4_address: 172.12.20.3
 
 volumes:
   mariadb-data:
 
-networks: 
+networks:
   lnmp:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.12.20.0/24
