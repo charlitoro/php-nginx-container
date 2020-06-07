@@ -6,32 +6,54 @@ services:
     image: nginx:latest
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./src/:/var/www/myapp
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
-      - php
+      - app
       - mariadb
     networks: 
       lnmp:
         ipv4_address: 172.12.20.5
 
-  php:
-    image: php:7.2-fpm
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: digitalocean.com/php7
+    restart: unless-stopped
+    tty: true
     volumes:
       - ./src:/var/www/myapp
       - ./config/php/php.ini:/usr/local/etc/php/php.ini
-    depends_on:
-      - mariadb
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www/myapp
     networks: 
       lnmp:
         ipv4_address: 172.12.20.4
+    
+  # php:
+  #   image: php:7.2-fpm
+  #   volumes:
+  #     - ./src:/var/www/myapp
+  #     - ./config/php/php.ini:/usr/local/etc/php/php.ini
+  #   command: "/bin/sh -c 'docker-php-ext-install mysqli'"
+  #   depends_on:
+  #     - mariadb
+  #   networks: 
+  #     lnmp:
+  #       ipv4_address: 172.12.20.4
 
   mariadb:
     image: mariadb:10.4
     restart: always
     command: "mysqld --init-file /data/application/init.sql"
     env_file: .env
+    ports:
+      - 3306:3306
     volumes:
       - ./mariadb:/var/lib/mysql
       - ./config/db/init.sql:/data/application/init.sql

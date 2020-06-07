@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link 
+        rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+        crossorigin="anonymous"
+    >
+    <style>
+        html body {
+            height: 100%;
+        }
+        h1{
+            text-align: center;
+        }
+        img{
+            width: 40%;
+            height: 40%;
+        }
+        .form-container {
+            padding: 2%;
+            margin: 8%;
+        }
+    </style>
+    <title>Carts Registration</title>
+</head>
+</head>
+
+<body>
+
+    <!--  -->
+    <div class="form-container shadow p-3 mb-5 bg-white rounded" >
+        <h1>Parking Carts Registration </h1>
+        <form id="carts-form" >
+            <div class="form-group">
+                <label for="photoLabel">Photo</label>
+                <input type="file" class="form-control-file" name="photo" id="photo">
+            </div>
+            <div class="form-group">
+            <label for="brandLabel">Brand</label>
+            <select class="form-control" name="brand" id="brand">
+                <option>...</option>
+                <option>Mazda</option>
+                <option>Chevrolet</option>
+                <option>Toyota</option>
+                <option>BMW</option>
+                <option>Suzuky</option>
+                <option>Ferrari</option>
+                <option>Mercedes Benz</option>
+                <option>Jeep</option>
+                <option>Other</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="modelLabel">Model</label>
+                <input type="number" class="form-control" class="form-control" name="model" id="model">
+            </div>
+            <div class="form-group">
+                <label for="colorLabel">Color</label>
+                <input type="color" class="form-control" name="color" id="color">
+            </div>
+            <div class="form-group">
+                <label for="licensePlate">License Plate</label>
+                <input type="text" class="form-control" name="licensePlate" id="licensePlate">
+            </div>
+            <div class="form-group">
+                <label for="proprietorNameLabel">Proprietor Name</label>
+                <input type="text" class="form-control" name="proprietorName" id="proprietorName">
+            </div>
+            <div class="form-group">
+                <label for="proprietorLastnameLabel">Proprietor Lastname</label>
+                <input type="text" class="form-control" name="proprietorLastname" id="proprietorLastname">
+            </div>
+            <div class="form-group">
+                <label for="dateLabel">Admission Date</label>
+                <input type="date" class="form-control" name="date" id="date">
+            </div>
+            <input type="hidden" name="form_submitted" value="1" />
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    <div class="container form-container shadow p-3 mb-5 bg-white rounded">
+        <h1 style='margin-bottom: 5%'>Registered Carts</h1>
+        <div id="carts-list" class='row row-cols-4'></div>
+    </div>
+
+    <!--  -->
+    <!-- <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script> -->
+    <script src="index.js"></script>
+    </body>
+</body>
+</html>
