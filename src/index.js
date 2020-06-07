@@ -4,7 +4,7 @@ $(document).ready( function () {
 
     $('#carts-form').submit( e => {
         e.preventDefault();
-        // const photo = $('#photo').val().replace(/(C:fakepath)/, 'assets/img/');
+        const now  = new Date();
         const postData = {
             photo: `assets/img/${document.getElementById("photo").files[0].name}`,
             brand: $('#brand').val(),
@@ -13,7 +13,7 @@ $(document).ready( function () {
             plate: $('#licensePlate').val(),
             name: $('#proprietorName').val(),
             lastname: $('#proprietorLastname').val(),
-            date: $('#date').val()
+            date: now.toDateString()
         }
         $.post('carts-add.php', postData, (response) => {
             $('carts-form').trigger('reset');

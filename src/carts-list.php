@@ -9,7 +9,6 @@
     }
     $json= array();
     while($row = mysqli_fetch_array($result)){
-        // echo '<script>console.log('. $row .') </script>';
         $json[] = array(
             'photo' => $row['photo'],
             'brand' => $row['brand'],
