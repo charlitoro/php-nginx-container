@@ -1,7 +1,7 @@
 <?php 
-    include 'connection.php';
+    include_once 'connection.php';
 
-    $query = "SELECT * FROM `carts`";
+    $query = "SELECT photo,brand,model,color,plate,name,lastname,date FROM `carts`";
     $connection = OpenConnection();
     $result = mysqli_query($connection, $query);
     if(!$result){

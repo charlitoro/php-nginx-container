@@ -1,8 +1,12 @@
 <?php
-    include 'connection.php';
+    include_once 'connection.php';
 
     $connection = OpenConnection();
     if(isset($_POST['name'])){
+        // Sentencia preparada
+        $query = $connection->prepare("INSERT INTO carts(photo, brand, model, color, plate, name, lastname, date) VALUES(?,?,?,?,?,?,?,?)");
+        $query->bind_param('ssisssss', $photo, $brand, $model, $color, $plate, $name, $lastname, $date);
+        // data
         $photo = $_POST['photo'];
         $brand = $_POST['brand'];
         $model = $_POST['model'];
@@ -11,15 +15,14 @@
         $name = $_POST['name'];
         $lastname = $_POST['lastname'];
         $date = $_POST['date'];
-        $query = "INSERT into carts(photo, brand, model, color, plate, name, lastname, date) 
-                VALUES ('$photo', '$brand', $model, '$color', '$plate', '$name', '$lastname', '$date')";
-        $result = mysqli_query($connection, $query);
 
+        $result = $query->execute();
+        $query->close();
+        
         if (!$result) {
             die('Query Failed');
         }
-
-        echo "Task Added Successfully";
+        echo "Ok";
     }
     CloseConnection($connection);
 ?>
