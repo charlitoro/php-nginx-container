@@ -2,8 +2,8 @@ $(document).ready( function () {
 
     fetchCarts();
 
-    $('#carts-form').submit( e => {
-        e.preventDefault();
+    $('#carts-form').ready( e => {
+        // e.preventDefault();
         const now  = new Date();
         const postData = {
             photo: `assets/img/${document.getElementById("photo").files[0].name}`,
@@ -15,16 +15,19 @@ $(document).ready( function () {
             lastname: $('#proprietorLastname').val(),
             date: now.toDateString()
         }
-        $.post('carts-add.php', postData, (response) => {
-            $('carts-form').trigger('reset');
+        $.post('plugins/carts-add.php', postData, (response) => {
             fetchCarts();
         })
         document.getElementById("carts-form").reset();
     } )
 
+    $('.sign-in-form').submit( e => {
+
+    })
+
     function fetchCarts() {
         $.ajax({
-            url: 'carts-list.php',
+            url: 'plugins/carts-list.php',
             type: 'GET',
             success: function(response) {
                 const carts = JSON.parse(response);

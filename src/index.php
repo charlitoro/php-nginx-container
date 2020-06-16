@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +15,8 @@
     <style>
         html body {
             height: 100%;
+            background: rgb(9,9,121);
+            background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(9,9,121,1) 5%, rgba(2,0,36,1) 20%, rgba(41,0,33,1) 80%, rgba(216,0,17,1) 95%, rgba(255,0,14,1) 100%);
         }
         h1{
             text-align: center;
@@ -22,7 +27,7 @@
         }
         .form-container {
             padding: 2%;
-            margin: 8%;
+            margin: 5%;
         }
     </style>
     <title>Carts Registration</title>
@@ -30,7 +35,30 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src="https://img.icons8.com/color/96/000000/valet-parking.png"/>
+            Parking
+        </a>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form class="form-inline mx-right my-2 my-lg-0" action="./plugins/user-logout.php" method="POST">
+                        <button class="btn btn-outline-primary mx-right my-2 my-sm-0" type="submit">
+                            <img src="https://img.icons8.com/android/48/000000/logout-rounded-left.png"/>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="form-container shadow p-3 mb-5 bg-white rounded" >
+        <?php
+            if( !isset($_SESSION['userId']) ) {
+                header('location: ./pages/login.php');
+                exit();
+            }
+        ?>
         <h1>Parking Carts Registration </h1>
         <form id="carts-form" >
             <div class="form-group">
@@ -73,7 +101,7 @@
                 <input type="text" class="form-control" name="proprietorLastname" id="proprietorLastname">
             </div>
             <input type="hidden" name="form_submitted" value="1" />
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="reset" class="btn btn-primary">Register</button>
         </form>
     </div>
     <div class="form-container shadow p-3 mb-5 bg-white rounded">
