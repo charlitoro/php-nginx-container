@@ -30,15 +30,20 @@
             margin: 5%;
         }
     </style>
-    <title>Carts Registration</title>
+    <title>Cars Registration</title>
 </head>
 </head>
 
 <body>
+    <?php
+        if( !isset($_SESSION['userId']) ) {
+            header('location: ./pages/login.php');
+            exit();
+        }
+    ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">
             <img src="https://img.icons8.com/color/96/000000/valet-parking.png"/>
-            Parking
         </a>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
@@ -53,13 +58,7 @@
         </div>
     </nav>
     <div class="form-container shadow p-3 mb-5 bg-white rounded" >
-        <?php
-            if( !isset($_SESSION['userId']) ) {
-                header('location: ./pages/login.php');
-                exit();
-            }
-        ?>
-        <h1>Parking Carts Registration </h1>
+        <h1>Parking Cars Registration </h1>
         <form id="carts-form" >
             <div class="form-group">
                 <label for="photoLabel">Photo</label>
@@ -105,7 +104,7 @@
         </form>
     </div>
     <div class="form-container shadow p-3 mb-5 bg-white rounded">
-        <h1 style='margin-bottom: 5%'>Registered Carts</h1>
+        <h1 style='margin-bottom: 5%'>Registered Cars</h1>
         <div id="carts-list" class='row row-cols-4'></div>
     </div>
 

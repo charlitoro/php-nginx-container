@@ -12,12 +12,6 @@
 
         <!-- import css styles -->
         <link rel="stylesheet" href="../styles/login.css">
-        <style>
-            body {
-                background: rgb(9,9,121);
-                background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(9,9,121,1) 5%, rgba(2,0,36,1) 20%, rgba(41,0,33,1) 80%, rgba(216,0,17,1) 95%, rgba(255,0,14,1) 100%);
-            }
-        </style>
     </head>
     <body>
         <div class="login-form">
@@ -39,7 +33,22 @@
                 <div class="form-group">
                     <button type="submit" name="signup-submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
                 </div>
-            
+                <?php 
+                    if(isset($_GET['error'])) {
+                        if($_GET['error'] == 'EmptyFields'){
+                            echo "<p style='color: red;'>Empty Fields: Fill in all fields!</p>";
+                        } else if($_GET['error'] == 'InvalidEmail') {
+                            echo "<p style='color: red;'>Invalid Email: Fill email with the correct format</p>";
+                        } else if($_GET['error'] == 'InvalidUsername') {
+                            echo "<p style='color: red;'>Invalid Username: Fill username without special characters</p>";
+                        } else if($_GET['error'] == 'UserTaken') {
+                            echo "<p style='color: red;'>User Taken: The user is registered</p>";
+                        }
+                    } else if(isset($_GET['signup']) == 'Success'){
+                        header('location: login.php');
+                        exit();
+                    }
+                ?>
             </form>
         </div>
     </body>

@@ -16,14 +16,14 @@
 
         <!-- import css styles -->
         <link rel="stylesheet" href="../styles/login.css">
-        <style>
-            body {
-                background: rgb(9,9,121);
-                background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(9,9,121,1) 5%, rgba(2,0,36,1) 20%, rgba(41,0,33,1) 80%, rgba(216,0,17,1) 95%, rgba(255,0,14,1) 100%);
-            }
-        </style>
     </head>
     <body class="body">
+        <?php
+            if( isset($_SESSION['userId']) ) {
+                header('location: ../index.php');
+                exit();
+            }
+        ?>
         <div class="login-form">
             <form id="sign-in-form" action="../plugins/user-login.php" method="POST">
                 <div class="avatar">
@@ -39,10 +39,24 @@
                 <div class="form-group">
                     <button type="submit" name="login-submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
                 </div>
-                <div class="clearfix">
+                <!-- <div class="clearfix">
                     <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
                     <a href="#" class="pull-right">Forgot Password?</a>
-                </div>
+                </div> -->
+                <?php 
+                    if(isset($_GET['error'])) {
+                        if($_GET['error'] == 'EmptyFields'){
+                            echo "<p style='color: red;'>Empty Fields: Fill in all fields!</p>";
+                        } else if($_GET['error'] == 'NoFoundUser') {
+                            echo "<p style='color: red;'>Not Found User!</p>";
+                        } else if($_GET['error'] == 'WrongPwd') {
+                            echo "<p style='color: red;'>Wrong Password!</p>";
+                        }
+                    } else if(isset($_GET['login']) == 'Success'){
+                        header('location: ../index.php');
+                        exit();
+                    }
+                ?>
             </form>
             <p class="text-center small">Don't have an account? <a href="signup.php">Sign up here!</a></p>
         </div>
