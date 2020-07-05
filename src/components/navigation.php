@@ -9,16 +9,13 @@
                 <a class='js-scroll-trigger' href='#page-top'>Start Bootstrap</a>
             </li>
             <li class='sidebar-nav-item'>
-                <a class='js-scroll-trigger' href='#page-top'>Home</a>
+                <a class='js-scroll-trigger' href='#page-top'> <i class='icon-home'></i>  Home</a>
+            </li> 
+            <li class='sidebar-nav-item'>
+                <a class='js-scroll-trigger' href='#about'> <i class='icon-info'></i> About</a>
             </li>
             <li class='sidebar-nav-item'>
-                <a class='js-scroll-trigger' href='#about'>About</a>
-            </li>
-            <li class='sidebar-nav-item'>
-                <a class='js-scroll-trigger' href='#services'>Services</a>
-            </li>
-            <li class='sidebar-nav-item'>
-                <a class='js-scroll-trigger' href='#contact'>Contact</a>
+                <a class='js-scroll-trigger' href='#services'> <i class='icon-music-tone'></i> Services</a>
             </li>
             </ul>
         </nav>

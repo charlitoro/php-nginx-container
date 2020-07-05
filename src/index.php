@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-screen-smartphone"></i>
+            <i class="icon-playlist"></i>
           </span>
           <h4>
             <strong>Vinyls</strong>
@@ -79,7 +79,7 @@
         </div>
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-pencil"></i>
+            <i class="icon-volume-2"></i>
           </span>
           <h4>
             <strong>Cassettes</strong>
@@ -88,7 +88,7 @@
         </div>
         <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-like"></i>
+            <i class="icon-disc"></i>
           </span>
           <h4>
             <strong>CDs</strong>
@@ -97,7 +97,7 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-mustache"></i>
+            <i class="icon-star"></i>
           </span>
           <h4>
             <strong>Collectibles</strong>
