@@ -1,2 +1,2 @@
-CREATE DATABASE IF NOT EXISTS mydb;
-USE mydb;
+CREATE DATABASE IF NOT EXISTS collectdb;
+USE collectdb;

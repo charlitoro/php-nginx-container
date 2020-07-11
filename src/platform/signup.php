@@ -5,27 +5,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Sign Up</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
         <!-- import css styles -->
-        <link rel="stylesheet" href="../styles/login.css">
+        <link rel="stylesheet" href="../styles/login.css"/>
     </head>
     <body>
         <div class="login-form">
             <form id="sign-up-form" action="../plugins/user-register.php" method="POST">
 
                 <div class="avatar">
-                    <img src="https://img.icons8.com/ios-glyphs/90/000000/user--v1.png"/>
+                    <img src="../assets/img/logo.svg"/>
                 </div>
                 <h2 class="text-center">Registry Form</h2>   
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Name" required="required">
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="username" placeholder="Username" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="email" required="required">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required="required">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" name="password" placeholder="Password" required="required">
@@ -52,6 +55,4 @@
             </form>
         </div>
     </body>
-    <!--  -->
-    <script src="index.js"></script>
 </html>

@@ -1,5 +1,5 @@
 CREATE TABLE `User` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),
   `username` varchar(50),
   `email` varchar(50),
@@ -7,14 +7,14 @@ CREATE TABLE `User` (
 );
 
 CREATE TABLE `Collection` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),
   `description` varchar(255),
   `user` int
 );
 
 CREATE TABLE `Album` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(50),
   `label` varchar(255),
   `sleeve` varchar(100),
@@ -31,7 +31,7 @@ CREATE TABLE `Album` (
 );
 
 CREATE TABLE `Article` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),
   `description` varchar(255),
   `artist` varchar(255),
@@ -43,7 +43,7 @@ CREATE TABLE `Article` (
 );
 
 CREATE TABLE `List` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(30),
   `user` int
 );
@@ -54,24 +54,24 @@ CREATE TABLE `ListoToAlbum` (
 );
 
 CREATE TABLE `Format` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(20),
   `description` varchar(255)
 );
 
 CREATE TABLE `Country` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `flag` varchar(255)
 );
 
 CREATE TABLE `Genre` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(20)
 );
 
 CREATE TABLE `Status` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `value` varchar(5),
   `description` varchar(255)
 );

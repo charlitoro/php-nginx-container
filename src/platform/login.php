@@ -4,23 +4,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Sign In</title>
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-
-        <!-- import css styles -->
-        <link rel="stylesheet" href="../styles/login.css">
-    </head>
+    <?php include_once "../template/head.php"; ?>
     <body class="body">
         <?php
             if( isset($_SESSION['userId']) ) {
-                header('location: ../index.php');
+                header('location: collect.php');
                 exit();
             }
         ?>
@@ -53,7 +41,7 @@
                             echo "<p style='color: red;'>Wrong Password!</p>";
                         }
                     } else if(isset($_GET['login']) == 'Success'){
-                        header('location: ../index.php');
+                        header('location: collect.php');
                         exit();
                     }
                 ?>
@@ -61,4 +49,5 @@
             <p class="text-center small">Don't have an account? <a href="signup.php">Sign up here!</a></p>
         </div>
     </body>
+    <?php include "../template/scripts.php"; ?>
 </html>
