@@ -1,6 +1,4 @@
-<?php 
-echo 
-"<footer class='footer text-center'>
+<footer class='footer text-center'>
   <div class='container'>
     <ul class='list-inline mb-5'>
       <li class='list-inline-item'>
@@ -21,5 +19,4 @@ echo
     </ul>
     <p class='text-muted small mb-0'>Copyright &copy; Your Website 2020</p>
   </div>
-</footer>"
-?>
+</footer>

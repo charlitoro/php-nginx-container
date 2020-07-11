@@ -6,6 +6,7 @@
         $DB = "collectdb";
 
         $connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PWD, $DB);
+        mysqli_set_charset($connection,"utf8");
         return $connection;
     }
 

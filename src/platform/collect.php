@@ -43,10 +43,10 @@
         <div class="container">
           <div class="row">
             <div class="col-12 text-center mt-4">
-              <a class="btn btn-outline-secondary mx-1 prev-collections" href="javascript:void(0)" title="Previous">
+              <a class="btn rounded-circle btn-primary mx-1 prev-collections" href="javascript:void(0)" title="Previous">
                 <i class="fa fa-lg fa-chevron-left"></i>
               </a>
-              <a class="btn btn-outline-secondary mx-1 next-collections" href="javascript:void(0)" title="Next">
+              <a class="btn rounded-circle btn-primary mx-1 next-collections" href="javascript:void(0)" title="Next">
                 <i class="fa fa-lg fa-chevron-right"></i>
               </a>
             </div>
@@ -83,10 +83,10 @@
         <div class="container">
           <div class="row">
             <div class="col-12 text-center mt-4">
-              <a class="btn btn-outline-secondary mx-1 prev-lists" href="javascript:void(0)" title="Previous">
+              <a class="btn rounded-circle btn-primary mx-1 mx-1 prev-lists" href="javascript:void(0)" title="Previous">
                 <i class="fa fa-lg fa-chevron-left"></i>
               </a>
-              <a class="btn btn-outline-secondary mx-1 next-lists" href="javascript:void(0)" title="Next">
+              <a class="btn rounded-circle btn-primary mx-1 next-lists" href="javascript:void(0)" title="Next">
                 <i class="fa fa-lg fa-chevron-right"></i>
               </a>
             </div>
