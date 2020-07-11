@@ -21,10 +21,7 @@
                     <a class='js-scroll-trigger' href='../index.php'> <i class='icon-home'></i> Home</a>
                 </li>
                 <li class='sidebar-nav-item'>
-                    <a class='js-scroll-trigger' href='#about'> <i class='icon-info'></i> Collections</a>
-                </li>
-                <li class='sidebar-nav-item'>
-                    <a class='js-scroll-trigger' href='#services'> <i class='icon-music-tone'></i> Lists</a>
+                    <a class='js-scroll-trigger' href='../plugins/user-logout.php'> <i class='icon-logout'></i> Logout</a>
                 </li>
             </ul>
         </nav>
