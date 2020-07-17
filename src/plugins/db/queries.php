@@ -145,4 +145,16 @@
         $connection -> close();
         return $result;
     }
+
+    function MutationCreateAlbum( $collectionId, $title, $label, $artist, $format, $genre, $country, $released, $status ){
+        $connection = OpenConnection();
+        $query = $connection->prepare(
+            "INSERT INTO Album(title,label,artist,formar,genre,country,released,diskStatus,collection) VALUES(?,?,?,?,?,?,?,?,?);"
+        );
+        $query->bind_param('sssiiiiii', $title, $label, $artist, $format, $genre, $country, $released, $status, $collectionId);
+        $query->execute();
+        $result = $query->affected_rows;
+        $connection -> close();
+        return $result;
+    }
 ?>

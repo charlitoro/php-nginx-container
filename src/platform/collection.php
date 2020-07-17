@@ -8,13 +8,22 @@
   <!-- Navigation -->
   <?php include '../template/platformNavigation.php'?>
 
+  <?php 
+    include_once "../plugins/db/queries.php";
+
+    if( !isset($_GET['id']) ) {
+      header("location: collect.php");
+    }
+    $collectionId = $_GET['id'];
+  ?>
+
   <section class="content-section bg-light" id="collections">
     <h1 class="text-center my-3" >Collection's Albums</h1>  
 
     <div class="col-md-12 text-center"> 
-      <button class='btn btn-success btn-xs' data-title='Add' data-toggle='modal' data-target='#delete' >
+      <a class='btn-album-create btn btn-success btn-xs' data-title='Add' data-id="<?php echo $collectionId; ?>" >
         <span class='icon-plus'></span> Create
-      </button>
+      </a>
     </div>
     
     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -26,12 +35,6 @@
       </tfoot>
       <tbody>
         <?php
-          include_once "../plugins/db/queries.php";
-
-          if( !isset($_GET['id']) ) {
-            header("location: collect.php");
-          }
-          $collectionId = $_GET['id'];
           $result = QueryAlbumsCollection( $collectionId );
           while( $row = $result->fetch_assoc() ){
             $albumId = $row['id'];
@@ -73,7 +76,7 @@
   <!-- Modals -->
   <div id="album-edit"></div>
   <div id="album-delete"></div>
-    
+  <div id="album-create"></div>  
 
   <!-- Footer -->
   <?php include '../template/footer.php' ?>
