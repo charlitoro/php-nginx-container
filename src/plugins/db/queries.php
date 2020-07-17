@@ -157,4 +157,14 @@
         $connection -> close();
         return $result;
     }
+
+    function MutationDeleteAlbum( $albumId ){
+        $connection = OpenConnection();
+        $query = $connection->prepare("DELETE FROM Album WHERE id=?;");
+        $query->bind_param('i', $albumId);
+        $query->execute();
+        $result = $query->affected_rows;
+        $connection -> close();
+        return $result;
+    }
 ?>

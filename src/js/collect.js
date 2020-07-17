@@ -81,4 +81,16 @@ $(document).ready(function () {
             }
         })
     })
+
+    $('.btn-delete').click(function () {
+        var data = { 
+            albumId: $('#albumId').val(),
+            collectionId: $('#collectionId').val() 
+        };
+        $.post('../plugins/album/delete.php', data, (response) => {
+            if (response) {
+                window.location = `../platform/collection.php?id=${response}`;
+            }
+        })
+    })
 });
