@@ -25,6 +25,7 @@
         rel='stylesheet' 
         type='text/css'
     >
+    <link href='https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css' rel='stylesheet'>
 
     <!-- Custom CSS -->
     <link href='../styles/main.css' rel='stylesheet'>
