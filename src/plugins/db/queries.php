@@ -52,21 +52,50 @@
         return $result;
     }
 
-    function QueryAlbumsCollection( $collectionId ) {
+    function QueryAlbumsCollection( $collectionId, $userId ) {
         $connection = OpenConnection();
         $query = $connection->prepare(
             "SELECT alb.id,alb.title,alb.label,alb.artist,fo.name as format,gen.name as genre,cou.name as country,alb.released,sta.value as status
             FROM 
                 Collection col join Album alb on col.id=alb.collection 
                     join Country cou on alb.country=cou.id 
-                    join Format fo on fo.id=alb.formar 
+                    join Format fo on fo.id=alb.format 
                     join Status sta on sta.id=alb.diskStatus 
                     join Genre gen on gen.id=alb.genre 
-            WHERE col.id=?;"
+            WHERE col.id=? and col.user=?;"
         );
-        $query->bind_param('i', $collectionId);
+        $query->bind_param('ii', $collectionId, $userId);
         $query->execute();
         $result = $query->get_result();
+        $connection -> close();
+        return $result;
+    }
+
+    function QueryList( $listId, $userId ) {
+        $connection = OpenConnection();
+        $query = $connection->prepare(
+            "SELECT alb.id,alb.title,alb.label,alb.artist,fo.name as format,gen.name as genre,cou.name as country,alb.released,sta.value as status
+            FROM List li join ListoToAlbum lta on li.id=lta.list 
+                join Album alb on lta.album=alb.id 
+                join Country cou on alb.country=cou.id 
+                join Format fo on fo.id=alb.format 
+                join Status sta on sta.id=alb.diskStatus 
+                join Genre gen on gen.id=alb.genre 
+            WHERE li.id=? and li.user=?;"
+        );
+        $query->bind_param('ii', $listId, $userId);
+        $query->execute();
+        $result = $query->get_result();
+        $connection -> close();
+        return $result;
+    }
+
+    function MutationRemoveAlbum( $albumId, $listId ){
+        $connection = OpenConnection();
+        $query = $connection->prepare("DELETE FROM ListoToAlbum WHERE album=? and list=?;");
+        $query->bind_param('ii', $albumId, $listId);
+        $query->execute();
+        $result = $query->affected_rows;
         $connection -> close();
         return $result;
     }
@@ -85,7 +114,7 @@
             FROM 
                 Collection col join Album alb on col.id=alb.collection
                     join Country cou on alb.country=cou.id 
-                    join Format fo on fo.id=alb.formar 
+                    join Format fo on fo.id=alb.format 
                     join Status sta on sta.id=alb.diskStatus 
                     join Genre gen on gen.id=alb.genre 
             WHERE alb.id=?;"
@@ -136,7 +165,7 @@
     function MutationUpdateAlbum( $albumId, $title, $label, $artist, $format, $genre, $country, $released, $status ){
         $connection = OpenConnection();
         $query = $connection->prepare(
-            "UPDATE Album SET title=?,label=?,artist=?,formar=?,genre=?,country=?,released=?,diskStatus=?
+            "UPDATE Album SET title=?,label=?,artist=?,format=?,genre=?,country=?,released=?,diskStatus=?
             WHERE id=?;"
         );
         $query->bind_param('sssiiiiii', $title, $label, $artist, $format, $genre, $country, $released, $status, $albumId);
@@ -149,7 +178,7 @@
     function MutationCreateAlbum( $collectionId, $title, $label, $artist, $format, $genre, $country, $released, $status ){
         $connection = OpenConnection();
         $query = $connection->prepare(
-            "INSERT INTO Album(title,label,artist,formar,genre,country,released,diskStatus,collection) VALUES(?,?,?,?,?,?,?,?,?);"
+            "INSERT INTO Album(title,label,artist,format,genre,country,released,diskStatus,collection) VALUES(?,?,?,?,?,?,?,?,?);"
         );
         $query->bind_param('sssiiiiii', $title, $label, $artist, $format, $genre, $country, $released, $status, $collectionId);
         $query->execute();

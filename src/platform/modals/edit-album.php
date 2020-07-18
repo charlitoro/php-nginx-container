@@ -13,7 +13,6 @@
   if($row = $result->fetch_assoc()){
     $collectionId = $row['collectionId'];
     $collection = $row['collection'];
-    // $albumId = $row['id'];
     $title = $row['title'];
     $label = $row['label'];
     $artist = $row['artist'];

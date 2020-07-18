@@ -15,6 +15,7 @@
       header("location: collect.php");
     }
     $collectionId = $_GET['id'];
+    $userId = $_SESSION['userId'];
   ?>
 
   <section class="content-section bg-light" id="collections">
@@ -35,7 +36,7 @@
       </tfoot>
       <tbody>
         <?php
-          $result = QueryAlbumsCollection( $collectionId );
+          $result = QueryAlbumsCollection( $collectionId, $userId );
           while( $row = $result->fetch_assoc() ){
             $albumId = $row['id'];
             $title = $row['title'];

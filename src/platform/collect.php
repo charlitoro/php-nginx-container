@@ -74,7 +74,7 @@
                     <img class='card-img-top' src='../assets/img/logo.svg' alt='Card image cap'>
                     <div class='card-body'>
                       <h4 class='card-title'>$name</h4>
-                      <a class='btn btn-primary'>Albumes</a>
+                      <a class='btn btn-primary' href='list.php?id=$id'>Albumes</a>
                     </div>
                   </div>
                 </div>

@@ -18,7 +18,7 @@ CREATE TABLE `Album` (
   `title` varchar(50),
   `label` varchar(255),
   `sleeve` varchar(100),
-  `formar` int,
+  `format` int,
   `artist` varchar(50),
   `genre` int,
   `country` int,
@@ -78,7 +78,7 @@ CREATE TABLE `Status` (
 
 ALTER TABLE `Collection` ADD FOREIGN KEY (`user`) REFERENCES `User` (`id`);
 
-ALTER TABLE `Album` ADD FOREIGN KEY (`formar`) REFERENCES `Format` (`id`);
+ALTER TABLE `Album` ADD FOREIGN KEY (`format`) REFERENCES `Format` (`id`);
 
 ALTER TABLE `Album` ADD FOREIGN KEY (`genre`) REFERENCES `Genre` (`id`);
 

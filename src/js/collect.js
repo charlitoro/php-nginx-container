@@ -93,4 +93,30 @@ $(document).ready(function () {
             }
         })
     })
+
+    $('.btn-list-remove').click(function () {
+        var id = $(this).data('id');
+        $.ajax({
+            url: "../platform/modals/remove-album.php",
+            data: { "id": id },
+            type: "POST",
+            cache: false,
+        }).done(function (response) {
+            if (response) {
+                $('#remove-album-on-list').html(response);
+                $('#modal-album-remove').modal('show');
+            }
+        })
+    })
+
+    $('.btn-remove').click(function () {
+        var data = { 
+            albumId: $('#albumId').val(),
+        };
+        $.post('../plugins/list/remove.php', data, (response) => {
+            if (response) {
+                window.location = `../platform/list.php?id=${response}`;
+            }
+        })
+    })
 });
