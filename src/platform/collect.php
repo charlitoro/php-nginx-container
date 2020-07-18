@@ -12,6 +12,11 @@
   <section class="content-section bg-light" id="collections">
     <div class="container">
       <h1 class="text-center my-3">Collections</h1>
+      <div class="col-md-12 text-center"> 
+      <a class='btn-create-collection btn btn-success btn-xs' data-title='Add' data-id="<?php echo $collectionId; ?>" >
+        <span class='icon-plus'></span> Create
+      </a>
+    </div>
       <div id='collections-list' class='carousel1 slide' data-ride='carousel'>
         <div class="carousel-inner row w-100 mx-auto">
           <?php
@@ -59,6 +64,11 @@
     </div>
     <div class="container">
       <h1 class="text-center my-3">Albums List</h1>
+      <div class="col-md-12 text-center"> 
+      <a class='btn-create-list btn btn-success btn-xs' data-title='Add' data-id="<?php echo $collectionId; ?>" >
+        <span class='icon-plus'></span> Create
+      </a>
+    </div>
       <div id='albums-list' class='carousel2 slide' data-ride='carousel'>
         <div class="carousel-inner row w-100 mx-auto">
           <?php
@@ -98,6 +108,9 @@
       </div>
     </div>
   </section>
+
+  <!-- modals -->
+  <div id="collect-create"></div>
 
   <!-- Footer -->
   <?php include '../template/footer.php' ?>

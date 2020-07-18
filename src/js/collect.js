@@ -64,6 +64,26 @@ $(document).ready(function () {
         })
     })
 
+    $('.btn-create-collection').click(function(){
+        $.ajax("../platform/modals/create-collection.php" )
+        .done(function (response) {
+            if (response) {
+                $('#collect-create').html(response);
+                $('#modal-create-collection').modal('show');
+            }
+        })
+    })
+
+    $('.btn-create-list').click(function(){
+        $.ajax("../platform/modals/create-list.php" )
+        .done(function (response) {
+            if (response) {
+                $('#collect-create').html(response);
+                $('#modal-create-list').modal('show');
+            }
+        })
+    })
+
     $('.btn-update').click(function () {
         var data = dataAlbumForm();
         $.post('../plugins/album/update.php', data, (response) => {
@@ -132,11 +152,11 @@ $(document).ready(function () {
 
     $('.btn-add').click(function () {
         var data = { albumId: $('#album').val() };
-        console.log( data );
         $.post('../plugins/list/add.php', data, (response) => {
             if (response) {
                 window.location = `../platform/list.php?id=${response}`;
             }
         })
     })
+    
 });

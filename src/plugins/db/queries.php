@@ -220,4 +220,24 @@
         $connection -> close();
         return $result;
     }
+
+    function MutationCreateCollection( $name, $description, $userId ){
+        $connection = OpenConnection();
+        $query = $connection->prepare("INSERT INTO Collection(name,description,user) VALUES(?,?,?);");
+        $query->bind_param('ssi', $name, $description, $userId);
+        $query->execute();
+        $result = $query->affected_rows;
+        $connection -> close();
+        return $result;
+    }
+
+    function MutationCreateList( $name, $userId ){
+        $connection = OpenConnection();
+        $query = $connection->prepare("INSERT INTO List (name,user) VALUES(?,?);");
+        $query->bind_param('si', $name,$userId);
+        $query->execute();
+        $result = $query->affected_rows;
+        $connection -> close();
+        return $result;
+    }
 ?>
