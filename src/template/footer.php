@@ -11,11 +11,6 @@
           <i class='icon-social-twitter'></i>
         </a>
       </li>
-      <li class='list-inline-item'>
-        <a class='social-link rounded-circle text-white' href='#!'>
-          <i class='icon-social-github'></i>
-        </a>
-      </li>
     </ul>
     <p class='text-muted small mb-0'>Copyright &copy; Your Website 2020</p>
   </div>

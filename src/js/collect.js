@@ -109,11 +109,31 @@ $(document).ready(function () {
         })
     })
 
+    $('.btn-list-add').click(function () {
+        var id = $(this).data('id');
+        $.ajax( "../platform/modals/add-album.php" ).done(function (response) {
+            if (response) {
+                $('#add-album-on-list').html(response);
+                $('#modal-album-add').modal('show');
+            }
+        })
+    })
+
     $('.btn-remove').click(function () {
         var data = { 
             albumId: $('#albumId').val(),
         };
         $.post('../plugins/list/remove.php', data, (response) => {
+            if (response) {
+                window.location = `../platform/list.php?id=${response}`;
+            }
+        })
+    })
+
+    $('.btn-add').click(function () {
+        var data = { albumId: $('#album').val() };
+        console.log( data );
+        $.post('../plugins/list/add.php', data, (response) => {
             if (response) {
                 window.location = `../platform/list.php?id=${response}`;
             }

@@ -23,7 +23,7 @@
     <h1 class="text-center my-3" >List's Albums</h1>  
 
     <div class="col-md-12 text-center"> 
-      <a class='btn-list-add btn btn-success btn-xs' data-title='Add' data-id="<?php echo $collectionId; ?>" >
+      <a class='btn-list-add btn btn-success btn-xs' data-title='Add' data-id="<?php echo $listId; ?>" >
         <span class='icon-plus'></span> Add
       </a>
     </div>

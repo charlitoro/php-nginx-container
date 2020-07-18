@@ -52,6 +52,30 @@
         return $result;
     }
 
+    function QueryAllAlbums( $userId ) {
+        $connection = OpenConnection();
+        $query = $connection->prepare(
+            "SELECT a.id,a.title,a.artist,a.label 
+            FROM Album a join Collection c on a.collection=c.id join `User` u on c.`user`=u.id
+            WHERE u.id=?;"
+        );
+        $query->bind_param('i', $userId);
+        $query->execute();
+        $result = $query->get_result();
+        $connection -> close();
+        return $result;
+    }
+
+    function MutationAddAlbum( $albumId, $listId ){
+        $connection = OpenConnection();
+        $query = $connection->prepare("INSERT INTO ListoToAlbum(album,list) VALUES(?,?);");
+        $query->bind_param('ii', $albumId, $listId);
+        $query->execute();
+        $result = $query->affected_rows;
+        $connection -> close();
+        return $result;
+    }
+
     function QueryAlbumsCollection( $collectionId, $userId ) {
         $connection = OpenConnection();
         $query = $connection->prepare(
